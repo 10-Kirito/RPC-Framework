@@ -1,0 +1,22 @@
+[
+{
+  "directory": "/home/kirito/projects/mprpc/cmake/build/src",
+  "command": "/usr/bin/g++ -Dmprpc_EXPORTS -I/home/kirito/projects/mprpc/src/include -I/home/kirito/projects/mprpc/src/util -g -fPIC -o CMakeFiles/mprpc.dir/mprpcapplication.cpp.o -c /home/kirito/projects/mprpc/src/mprpcapplication.cpp",
+  "file": "/home/kirito/projects/mprpc/src/mprpcapplication.cpp"
+},
+{
+  "directory": "/home/kirito/projects/mprpc/cmake/build/src",
+  "command": "/usr/bin/g++ -Dmprpc_EXPORTS -I/home/kirito/projects/mprpc/src/include -I/home/kirito/projects/mprpc/src/util -g -fPIC -o CMakeFiles/mprpc.dir/rpcprovider.cpp.o -c /home/kirito/projects/mprpc/src/rpcprovider.cpp",
+  "file": "/home/kirito/projects/mprpc/src/rpcprovider.cpp"
+},
+{
+  "directory": "/home/kirito/projects/mprpc/cmake/build/examples",
+  "command": "/usr/bin/g++  -I/home/kirito/projects/mprpc/src/include -I/home/kirito/projects/mprpc/src/util -I/home/kirito/projects/mprpc/cmake/build/examples -g -o CMakeFiles/PROTOBUF.dir/user.pb.cc.o -c /home/kirito/projects/mprpc/cmake/build/examples/user.pb.cc",
+  "file": "/home/kirito/projects/mprpc/cmake/build/examples/user.pb.cc"
+},
+{
+  "directory": "/home/kirito/projects/mprpc/cmake/build/examples/callee",
+  "command": "/usr/bin/g++  -I/home/kirito/projects/mprpc/src/include -I/home/kirito/projects/mprpc/src/util -I/home/kirito/projects/mprpc/cmake/build/examples -g -o CMakeFiles/provider.dir/userservice.cc.o -c /home/kirito/projects/mprpc/examples/callee/userservice.cc",
+  "file": "/home/kirito/projects/mprpc/examples/callee/userservice.cc"
+}
+]

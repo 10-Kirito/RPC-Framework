@@ -1,0 +1,22 @@
+syntax = "proto3";
+package kirito;
+option cc_generic_services = true;
+
+message Result {
+    int32 errorCode = 1;
+    bytes errorMessage = 2;
+}
+
+message LoginRequest {
+    bytes name = 1;
+    bytes password = 2;
+}
+
+message LoginResponse {
+    Result result = 1;
+    bool success = 2;
+}
+
+service LoginServiceRPC {
+    rpc Login(LoginRequest) returns(LoginResponse);
+}

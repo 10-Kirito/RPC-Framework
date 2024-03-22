@@ -1,0 +1,48 @@
+syntax = "proto3"; // protobuf version
+
+package kirito; // package name, like `namespace` in C++
+
+option cc_generic_services = true;
+
+message Result {
+    int32 errcode = 1;
+    bytes errmsg = 2;
+    bool success = 3;
+}
+
+message LoginRequest {
+    bytes name = 1;
+    string pwd = 2;
+}
+
+message LoginResponse {
+    Result result = 1;
+}
+
+
+message GetFriendListsRequest {
+    uint32 userid = 1;
+}
+
+message User {
+    bytes name = 1;
+    uint32 age = 2;
+    // enum type
+    enum Sex {
+        MAN = 0;
+        WOMAN = 1;
+    }
+    Sex sex = 3;
+}
+
+message GetFriendListsResponse {
+    Result result = 1;
+    // define a list type
+    repeated User friends = 2;
+}
+
+// define a service
+service UserService {
+    rpc Login(LoginRequest) returns(LoginResponse);
+    rpc GetFriends(GetFriendListsRequest) returns(GetFriendListsResponse);
+}

@@ -1,0 +1,11 @@
+/home/kirito/projects/mprpc/cmake/build/CMakeFiles/edit_cache.dir
+/home/kirito/projects/mprpc/cmake/build/CMakeFiles/rebuild_cache.dir
+/home/kirito/projects/mprpc/cmake/build/src/CMakeFiles/mprpc.dir
+/home/kirito/projects/mprpc/cmake/build/src/CMakeFiles/edit_cache.dir
+/home/kirito/projects/mprpc/cmake/build/src/CMakeFiles/rebuild_cache.dir
+/home/kirito/projects/mprpc/cmake/build/examples/CMakeFiles/PROTOBUF.dir
+/home/kirito/projects/mprpc/cmake/build/examples/CMakeFiles/edit_cache.dir
+/home/kirito/projects/mprpc/cmake/build/examples/CMakeFiles/rebuild_cache.dir
+/home/kirito/projects/mprpc/cmake/build/examples/callee/CMakeFiles/provider.dir
+/home/kirito/projects/mprpc/cmake/build/examples/callee/CMakeFiles/edit_cache.dir
+/home/kirito/projects/mprpc/cmake/build/examples/callee/CMakeFiles/rebuild_cache.dir

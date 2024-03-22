@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../../../lib/libPROTOBUF.a CMakeFiles/PROTOBUF.dir/user.pb.cc.o
+/usr/bin/ranlib ../../../lib/libPROTOBUF.a
