@@ -9,3 +9,6 @@
 /home/kirito/projects/mprpc/cmake/build/examples/callee/CMakeFiles/provider.dir
 /home/kirito/projects/mprpc/cmake/build/examples/callee/CMakeFiles/edit_cache.dir
 /home/kirito/projects/mprpc/cmake/build/examples/callee/CMakeFiles/rebuild_cache.dir
+/home/kirito/projects/mprpc/cmake/build/examples/caller/CMakeFiles/consumer.dir
+/home/kirito/projects/mprpc/cmake/build/examples/caller/CMakeFiles/edit_cache.dir
+/home/kirito/projects/mprpc/cmake/build/examples/caller/CMakeFiles/rebuild_cache.dir

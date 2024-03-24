@@ -1,22 +1,42 @@
 [
 {
   "directory": "/home/kirito/projects/mprpc/cmake/build/src",
-  "command": "/usr/bin/g++ -Dmprpc_EXPORTS -I/home/kirito/projects/mprpc/src/include -I/home/kirito/projects/mprpc/src/util -g -fPIC -o CMakeFiles/mprpc.dir/mprpcapplication.cpp.o -c /home/kirito/projects/mprpc/src/mprpcapplication.cpp",
+  "command": "/usr/bin/g++ -DBOOST_ALLOW_DEPRECATED_HEADERS -DBOOST_BIND_GLOBAL_PLACEHOLDERS -I/home/kirito/projects/mprpc/src/include -I/home/kirito/projects/mprpc/src/util -g -o CMakeFiles/mprpc.dir/mprpcapplication.cpp.o -c /home/kirito/projects/mprpc/src/mprpcapplication.cpp",
   "file": "/home/kirito/projects/mprpc/src/mprpcapplication.cpp"
 },
 {
   "directory": "/home/kirito/projects/mprpc/cmake/build/src",
-  "command": "/usr/bin/g++ -Dmprpc_EXPORTS -I/home/kirito/projects/mprpc/src/include -I/home/kirito/projects/mprpc/src/util -g -fPIC -o CMakeFiles/mprpc.dir/rpcprovider.cpp.o -c /home/kirito/projects/mprpc/src/rpcprovider.cpp",
+  "command": "/usr/bin/g++ -DBOOST_ALLOW_DEPRECATED_HEADERS -DBOOST_BIND_GLOBAL_PLACEHOLDERS -I/home/kirito/projects/mprpc/src/include -I/home/kirito/projects/mprpc/src/util -g -o CMakeFiles/mprpc.dir/mprpcchannel.cpp.o -c /home/kirito/projects/mprpc/src/mprpcchannel.cpp",
+  "file": "/home/kirito/projects/mprpc/src/mprpcchannel.cpp"
+},
+{
+  "directory": "/home/kirito/projects/mprpc/cmake/build/src",
+  "command": "/usr/bin/g++ -DBOOST_ALLOW_DEPRECATED_HEADERS -DBOOST_BIND_GLOBAL_PLACEHOLDERS -I/home/kirito/projects/mprpc/src/include -I/home/kirito/projects/mprpc/src/util -g -o CMakeFiles/mprpc.dir/mprpcconfig.cpp.o -c /home/kirito/projects/mprpc/src/mprpcconfig.cpp",
+  "file": "/home/kirito/projects/mprpc/src/mprpcconfig.cpp"
+},
+{
+  "directory": "/home/kirito/projects/mprpc/cmake/build/src",
+  "command": "/usr/bin/g++ -DBOOST_ALLOW_DEPRECATED_HEADERS -DBOOST_BIND_GLOBAL_PLACEHOLDERS -I/home/kirito/projects/mprpc/src/include -I/home/kirito/projects/mprpc/src/util -g -o CMakeFiles/mprpc.dir/rpcheader.pb.cc.o -c /home/kirito/projects/mprpc/src/rpcheader.pb.cc",
+  "file": "/home/kirito/projects/mprpc/src/rpcheader.pb.cc"
+},
+{
+  "directory": "/home/kirito/projects/mprpc/cmake/build/src",
+  "command": "/usr/bin/g++ -DBOOST_ALLOW_DEPRECATED_HEADERS -DBOOST_BIND_GLOBAL_PLACEHOLDERS -I/home/kirito/projects/mprpc/src/include -I/home/kirito/projects/mprpc/src/util -g -o CMakeFiles/mprpc.dir/rpcprovider.cpp.o -c /home/kirito/projects/mprpc/src/rpcprovider.cpp",
   "file": "/home/kirito/projects/mprpc/src/rpcprovider.cpp"
 },
 {
   "directory": "/home/kirito/projects/mprpc/cmake/build/examples",
-  "command": "/usr/bin/g++  -I/home/kirito/projects/mprpc/src/include -I/home/kirito/projects/mprpc/src/util -I/home/kirito/projects/mprpc/cmake/build/examples -g -o CMakeFiles/PROTOBUF.dir/user.pb.cc.o -c /home/kirito/projects/mprpc/cmake/build/examples/user.pb.cc",
+  "command": "/usr/bin/g++ -DBOOST_ALLOW_DEPRECATED_HEADERS -DBOOST_BIND_GLOBAL_PLACEHOLDERS -I/home/kirito/projects/mprpc/src/include -I/home/kirito/projects/mprpc/src/util -I/home/kirito/projects/mprpc/cmake/build/examples -g -o CMakeFiles/PROTOBUF.dir/user.pb.cc.o -c /home/kirito/projects/mprpc/cmake/build/examples/user.pb.cc",
   "file": "/home/kirito/projects/mprpc/cmake/build/examples/user.pb.cc"
 },
 {
   "directory": "/home/kirito/projects/mprpc/cmake/build/examples/callee",
-  "command": "/usr/bin/g++  -I/home/kirito/projects/mprpc/src/include -I/home/kirito/projects/mprpc/src/util -I/home/kirito/projects/mprpc/cmake/build/examples -g -o CMakeFiles/provider.dir/userservice.cc.o -c /home/kirito/projects/mprpc/examples/callee/userservice.cc",
+  "command": "/usr/bin/g++ -DBOOST_ALLOW_DEPRECATED_HEADERS -DBOOST_BIND_GLOBAL_PLACEHOLDERS -I/home/kirito/projects/mprpc/src/include -I/home/kirito/projects/mprpc/src/util -I/home/kirito/projects/mprpc/cmake/build/examples -g -o CMakeFiles/provider.dir/userservice.cc.o -c /home/kirito/projects/mprpc/examples/callee/userservice.cc",
   "file": "/home/kirito/projects/mprpc/examples/callee/userservice.cc"
+},
+{
+  "directory": "/home/kirito/projects/mprpc/cmake/build/examples/caller",
+  "command": "/usr/bin/g++ -DBOOST_ALLOW_DEPRECATED_HEADERS -DBOOST_BIND_GLOBAL_PLACEHOLDERS -I/home/kirito/projects/mprpc/src/include -I/home/kirito/projects/mprpc/src/util -I/home/kirito/projects/mprpc/cmake/build/examples -g -o CMakeFiles/consumer.dir/calluserservice.cpp.o -c /home/kirito/projects/mprpc/examples/caller/calluserservice.cpp",
+  "file": "/home/kirito/projects/mprpc/examples/caller/calluserservice.cpp"
 }
 ]

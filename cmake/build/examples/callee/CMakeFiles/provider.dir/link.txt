@@ -1,1 +1,1 @@
-/usr/bin/g++ -g CMakeFiles/provider.dir/userservice.cc.o -o ../../../../bin/provider   -L/home/kirito/projects/mprpc/lib  -Wl,-rpath,/home/kirito/projects/mprpc/lib:/usr/local/lib /usr/local/lib/libprotobuf.so ../../../../lib/libPROTOBUF.a ../../../../lib/libmprpc.so 
+/usr/bin/g++ -g CMakeFiles/provider.dir/userservice.cc.o -o ../../../../bin/provider   -L/home/kirito/projects/mprpc/lib  -Wl,-rpath,/home/kirito/projects/mprpc/lib:/usr/local/lib /usr/local/lib/libprotobuf.so ../../../../lib/libPROTOBUF.a ../../../../lib/libmprpc.a -lmuduo_net -lmuduo_base -lpthread 

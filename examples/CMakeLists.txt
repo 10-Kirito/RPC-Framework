@@ -9,3 +9,4 @@ get_filename_component(USER_PROTO_PATH ${USER_PROTO_HDRS} DIRECTORY)
 include_directories(${USER_PROTO_PATH})
 
 add_subdirectory(callee)
+add_subdirectory(caller)

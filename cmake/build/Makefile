@@ -155,6 +155,19 @@ provider/fast:
 	$(MAKE) $(MAKESILENT) -f examples/callee/CMakeFiles/provider.dir/build.make examples/callee/CMakeFiles/provider.dir/build
 .PHONY : provider/fast
 
+#=============================================================================
+# Target rules for targets named consumer
+
+# Build rule for target.
+consumer: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 consumer
+.PHONY : consumer
+
+# fast build rule for target.
+consumer/fast:
+	$(MAKE) $(MAKESILENT) -f examples/caller/CMakeFiles/consumer.dir/build.make examples/caller/CMakeFiles/consumer.dir/build
+.PHONY : consumer/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -164,6 +177,7 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... PROTOBUF"
+	@echo "... consumer"
 	@echo "... mprpc"
 	@echo "... provider"
 .PHONY : help

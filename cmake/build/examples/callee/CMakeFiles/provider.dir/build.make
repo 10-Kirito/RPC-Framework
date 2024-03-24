@@ -94,7 +94,7 @@ provider_EXTERNAL_OBJECTS =
 ../../bin/provider: examples/callee/CMakeFiles/provider.dir/build.make
 ../../bin/provider: /usr/local/lib/libprotobuf.so
 ../../bin/provider: ../../lib/libPROTOBUF.a
-../../bin/provider: ../../lib/libmprpc.so
+../../bin/provider: ../../lib/libmprpc.a
 ../../bin/provider: examples/callee/CMakeFiles/provider.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/kirito/projects/mprpc/cmake/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable ../../../../bin/provider"
 	cd /home/kirito/projects/mprpc/cmake/build/examples/callee && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/provider.dir/link.txt --verbose=$(VERBOSE)
