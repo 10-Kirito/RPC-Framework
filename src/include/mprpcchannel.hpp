@@ -13,9 +13,9 @@ using google::protobuf::RpcController;
 
 class MprpcChannel : public google::protobuf::RpcChannel {
 public:
-  std::shared_ptr<int> Connect();
+  std::shared_ptr<int> Connect(RpcController*);
   int SendBuffer(std::shared_ptr<int>, const std::string &);
-  std::string ReceiveBuffer(std::shared_ptr<int>);
+  std::string ReceiveBuffer(RpcController*, std::shared_ptr<int>);
   // override the CallMethod, and all the rpc call in the client end will go
   // through this function
   // ==> important!!! <==

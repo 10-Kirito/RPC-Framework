@@ -3,12 +3,11 @@
 #include "mprpcconfig.hpp"
 #include "rpcheader.pb.h"
 #include <arpa/inet.h>
-#include <cerrno>
 #include <cstdint>
 #include <cstdlib>
-#include <cstring>
 #include <functional>
 #include <google/protobuf/message.h>
+#include <google/protobuf/service.h>
 #include <google/protobuf/stubs/callback.h>
 #include <iostream>
 #include <memory>
@@ -41,7 +40,7 @@ void MprpcChannel::CallMethod(const MethodDescriptor *method,
   if (request->SerializeToString(&arguments_str)) {
     arguments_size = arguments_str.size();
   } else {
-    std::cout << "SerializeToString failed" << std::endl;
+    controller->SetFailed("serialize request failed");
     return;
   }
 
@@ -56,7 +55,7 @@ void MprpcChannel::CallMethod(const MethodDescriptor *method,
   if (rpcheader.SerializePartialToString(&rpcheaderstr)) {
     header_size = rpcheaderstr.size();
   } else {
-    std::cout << "SerializePartialToString failed" << std::endl;
+    controller->SetFailed("serialize request failed");
     return;
   }
 
@@ -73,19 +72,19 @@ void MprpcChannel::CallMethod(const MethodDescriptor *method,
             << "arguments:" << arguments_str << std::endl;
 
   // 3. create a clientfd and connnect the rpc server
-  std::shared_ptr<int> clientfdPtr = Connect();
+  std::shared_ptr<int> clientfdPtr = Connect(controller);
   std::cout << "connect server success" << std::endl;
   // 4. send the buffer to the RPC server
   if (-1 == SendBuffer(clientfdPtr, sendbuffer)) {
-    std::cout << "send data to server failed" << std::endl;
+    controller->SetFailed("send data to server failed");
     exit(EXIT_FAILURE);
   }
 
   // 5. receive the data from the RPC server
-  std::string receivebuffer = ReceiveBuffer(clientfdPtr);
+  std::string receivebuffer = ReceiveBuffer(controller, clientfdPtr);
 
   if (!response->ParseFromString(receivebuffer)) {
-    std::cout << "ParseFromString failed" << std::endl;
+    controller->SetFailed("ParseFromString failed");
     return;
   }
 }
@@ -97,13 +96,13 @@ void Closefd(int *fd) {
   }
 }
 
-std::shared_ptr<int> MprpcChannel::Connect() {
+std::shared_ptr<int> MprpcChannel::Connect(RpcController *controller) {
   // create a clientfd
   std::shared_ptr<int> clientfdPtr(new int(socket(AF_INET, SOCK_STREAM, 0)),
                                    std::function<void(int *)>(&Closefd));
   // int client = socket(AF_INET, SOCK_STREAM, 0);
   if (-1 == *clientfdPtr) {
-    std::cout << "create socket failed" << std::endl;
+    controller->SetFailed("create socker failed");
     exit(EXIT_FAILURE);
   }
   // create the addr
@@ -117,7 +116,7 @@ std::shared_ptr<int> MprpcChannel::Connect() {
   // connect the RPC server
   if (-1 == connect(*clientfdPtr, (struct sockaddr *)&server_addr,
                     sizeof(server_addr))) {
-    std::cout << "connect server failed" << std::endl;
+    controller->SetFailed("connect server failed");
     exit(EXIT_FAILURE);
   }
 
@@ -134,7 +133,7 @@ int MprpcChannel::SendBuffer(std::shared_ptr<int> clientPtr,
   return 1;
 }
 
-std::string MprpcChannel::ReceiveBuffer(std::shared_ptr<int> clientPtr) {
+std::string MprpcChannel::ReceiveBuffer(RpcController* controller,std::shared_ptr<int> clientPtr) {
   // receive the data from the RPC server
   char buffer[1024] = {0};
   std::string receiveData;
@@ -142,10 +141,10 @@ std::string MprpcChannel::ReceiveBuffer(std::shared_ptr<int> clientPtr) {
   while (true) {
     int receiveLen = recv(*clientPtr, buffer, sizeof(buffer), 0);
     if (receiveLen < 0) {
-      std::cerr << "recv() failed" << strerror(errno) << std::endl;
+      controller->SetFailed("recv() failed");
       break;
     } else if (receiveLen == 0) {
-      std::cerr << "Connection closed by server" << std::endl;
+      controller->SetFailed("Connection closed by server");
       break;
     } else {
       // Data receive successfully

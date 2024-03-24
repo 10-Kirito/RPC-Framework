@@ -1,6 +1,7 @@
 #include "mprpcapplication.hpp"
 #include "mprpcchannel.hpp"
 #include "user.pb.h"
+#include "mprpccontroller.hpp"
 
 int main(int argc, char **argv) {
   // Initialize the config
@@ -14,8 +15,15 @@ int main(int argc, char **argv) {
 
   kirito::LoginResponse response;
 
+  MprpcController controller;
   // call the RPC function
-  stub.Login(nullptr, &request, &response, nullptr);
+  stub.Login(&controller, &request, &response, nullptr);
+
+  // check the RPC status
+  if (controller.Failed()) {
+    std::cout << controller.ErrorText() << std::endl;
+    return 0;
+  }
 
   if (0 == response.result().errorcode()) {
     std::cout << "rpc login response error: "
