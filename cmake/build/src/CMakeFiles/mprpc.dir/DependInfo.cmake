@@ -11,6 +11,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/kirito/projects/mprpc/src/mprpcapplication.cpp" "src/CMakeFiles/mprpc.dir/mprpcapplication.cpp.o" "gcc" "src/CMakeFiles/mprpc.dir/mprpcapplication.cpp.o.d"
   "/home/kirito/projects/mprpc/src/mprpcchannel.cpp" "src/CMakeFiles/mprpc.dir/mprpcchannel.cpp.o" "gcc" "src/CMakeFiles/mprpc.dir/mprpcchannel.cpp.o.d"
   "/home/kirito/projects/mprpc/src/mprpcconfig.cpp" "src/CMakeFiles/mprpc.dir/mprpcconfig.cpp.o" "gcc" "src/CMakeFiles/mprpc.dir/mprpcconfig.cpp.o.d"
+  "/home/kirito/projects/mprpc/src/mprpccontroller.cpp" "src/CMakeFiles/mprpc.dir/mprpccontroller.cpp.o" "gcc" "src/CMakeFiles/mprpc.dir/mprpccontroller.cpp.o.d"
   "/home/kirito/projects/mprpc/src/rpcheader.pb.cc" "src/CMakeFiles/mprpc.dir/rpcheader.pb.cc.o" "gcc" "src/CMakeFiles/mprpc.dir/rpcheader.pb.cc.o.d"
   "/home/kirito/projects/mprpc/src/rpcprovider.cpp" "src/CMakeFiles/mprpc.dir/rpcprovider.cpp.o" "gcc" "src/CMakeFiles/mprpc.dir/rpcprovider.cpp.o.d"
   )

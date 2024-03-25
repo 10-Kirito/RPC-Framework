@@ -1,3 +1,4 @@
+#include "log.hpp"
 #include "mprpcapplication.hpp"
 #include "mprpcchannel.hpp"
 #include "user.pb.h"
@@ -14,6 +15,8 @@ int main(int argc, char **argv) {
   request.set_password("123456");
 
   kirito::LoginResponse response;
+
+  LOG_INFO("==>begin test the RPC login()");
 
   MprpcController controller;
   // call the RPC function

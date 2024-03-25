@@ -1,0 +1,23 @@
+[2024-03-24 19:53:43.070] [RpcProvider] [info] register service name:UserServiceRPC
+[2024-03-24 19:53:43.071] [RpcProvider] [info] register service method:GetUserInfo
+[2024-03-24 19:53:43.071] [RpcProvider] [info] finished the register
+[2024-03-24 19:53:43.071] [RpcProvider] [info] register service method:Login
+[2024-03-24 20:01:10.701] [RpcProvider] [info] register service name:UserServiceRPC
+[2024-03-24 20:01:10.701] [RpcProvider] [info] register service method:Login
+[2024-03-24 20:01:10.701] [RpcProvider] [info] register service method:GetUserInfo
+[2024-03-24 20:01:10.701] [RpcProvider] [info] finished the register
+[2024-03-24 20:01:18.853] [RpcProvider] [info] header size:25
+[2024-03-24 20:01:18.853] [RpcProvider] [info] method_name:Login
+[2024-03-24 20:01:18.853] [RpcProvider] [info] service_name:UserServiceRPC
+[2024-03-24 20:01:18.853] [RpcProvider] [info] arguments:
+kirito123456
+[2024-03-24 20:01:18.853] [RpcProvider] [info] args_size:16
+[2024-03-24 20:01:18.854] [RpcProvider] [info] header size:31
+[2024-03-24 20:01:18.854] [RpcProvider] [info] service_name:UserServiceRPC
+[2024-03-24 20:01:18.854] [RpcProvider] [info] method_name:GetUserInfo
+[2024-03-24 20:01:18.854] [RpcProvider] [info] args_size:3
+[2024-03-24 20:01:18.854] [RpcProvider] [info] arguments:Ò
+[2024-03-24 20:09:29.569] [RpcProvider] [info] register service name:UserServiceRPC
+[2024-03-24 20:09:29.569] [RpcProvider] [info] register service method:GetUserInfo
+[2024-03-24 20:09:29.569] [RpcProvider] [info] finished the register
+[2024-03-24 20:09:29.569] [RpcProvider] [info] register service method:Login

@@ -1,0 +1,22 @@
+[2024-03-25 10:25:00.668] [RpcProvider] [info] register service name:UserServiceRPC
+[2024-03-25 10:25:00.668] [RpcProvider] [info] register service method:GetUserInfo
+[2024-03-25 10:25:00.668] [RpcProvider] [info] finished the register
+[2024-03-25 10:25:00.668] [RpcProvider] [info] register service method:Login
+[2024-03-25 10:28:28.138] [MprpcApplication] [info] loading config file <config.json> ...
+[2024-03-25 10:29:54.585] [MprpcApplication] [info] loading config file <config.json> ...
+[2024-03-25 11:12:18.984] [MPRPC] [info] loading config file <config.json> ...
+[2024-03-25 11:12:18.984] [MPRPC] [info] register service name:UserServiceRPC
+[2024-03-25 11:12:18.984] [MPRPC] [info] register service method:Login
+[2024-03-25 11:12:18.984] [MPRPC] [info] register service method:GetUserInfo
+[2024-03-25 11:12:18.984] [MPRPC] [info] finished the register
+[2024-03-25 11:12:56.407] [MPRPC] [info] header size:25
+[2024-03-25 11:12:56.407] [MPRPC] [info] service_name:UserServiceRPC
+[2024-03-25 11:12:56.407] [MPRPC] [info] method_name:Login
+[2024-03-25 11:12:56.407] [MPRPC] [info] args_size:16
+[2024-03-25 11:12:56.407] [MPRPC] [info] arguments:
+kirito123456
+[2024-03-25 11:12:56.407] [MPRPC] [info] header size:31
+[2024-03-25 11:12:56.407] [MPRPC] [info] service_name:UserServiceRPC
+[2024-03-25 11:12:56.407] [MPRPC] [info] method_name:GetUserInfo
+[2024-03-25 11:12:56.407] [MPRPC] [info] args_size:3
+[2024-03-25 11:12:56.407] [MPRPC] [info] arguments:Ò

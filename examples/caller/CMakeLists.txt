@@ -1,5 +1,5 @@
 aux_source_directory(. SRC_LIST)
 add_executable(consumer ${SRC_LIST})
-
+set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin/client)
 target_link_libraries(consumer ${PROTOBUF_LIBRARIES} PROTOBUF)
 target_link_libraries(consumer mprpc)

@@ -111,10 +111,24 @@ src/CMakeFiles/mprpc.dir/mprpcconfig.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mprpc.dir/mprpcconfig.cpp.s"
 	cd /home/kirito/projects/mprpc/cmake/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kirito/projects/mprpc/src/mprpcconfig.cpp -o CMakeFiles/mprpc.dir/mprpcconfig.cpp.s
 
+src/CMakeFiles/mprpc.dir/mprpccontroller.cpp.o: src/CMakeFiles/mprpc.dir/flags.make
+src/CMakeFiles/mprpc.dir/mprpccontroller.cpp.o: ../../src/mprpccontroller.cpp
+src/CMakeFiles/mprpc.dir/mprpccontroller.cpp.o: src/CMakeFiles/mprpc.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kirito/projects/mprpc/cmake/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/CMakeFiles/mprpc.dir/mprpccontroller.cpp.o"
+	cd /home/kirito/projects/mprpc/cmake/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/mprpc.dir/mprpccontroller.cpp.o -MF CMakeFiles/mprpc.dir/mprpccontroller.cpp.o.d -o CMakeFiles/mprpc.dir/mprpccontroller.cpp.o -c /home/kirito/projects/mprpc/src/mprpccontroller.cpp
+
+src/CMakeFiles/mprpc.dir/mprpccontroller.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mprpc.dir/mprpccontroller.cpp.i"
+	cd /home/kirito/projects/mprpc/cmake/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kirito/projects/mprpc/src/mprpccontroller.cpp > CMakeFiles/mprpc.dir/mprpccontroller.cpp.i
+
+src/CMakeFiles/mprpc.dir/mprpccontroller.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mprpc.dir/mprpccontroller.cpp.s"
+	cd /home/kirito/projects/mprpc/cmake/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kirito/projects/mprpc/src/mprpccontroller.cpp -o CMakeFiles/mprpc.dir/mprpccontroller.cpp.s
+
 src/CMakeFiles/mprpc.dir/rpcheader.pb.cc.o: src/CMakeFiles/mprpc.dir/flags.make
 src/CMakeFiles/mprpc.dir/rpcheader.pb.cc.o: ../../src/rpcheader.pb.cc
 src/CMakeFiles/mprpc.dir/rpcheader.pb.cc.o: src/CMakeFiles/mprpc.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kirito/projects/mprpc/cmake/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/CMakeFiles/mprpc.dir/rpcheader.pb.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kirito/projects/mprpc/cmake/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/CMakeFiles/mprpc.dir/rpcheader.pb.cc.o"
 	cd /home/kirito/projects/mprpc/cmake/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/mprpc.dir/rpcheader.pb.cc.o -MF CMakeFiles/mprpc.dir/rpcheader.pb.cc.o.d -o CMakeFiles/mprpc.dir/rpcheader.pb.cc.o -c /home/kirito/projects/mprpc/src/rpcheader.pb.cc
 
 src/CMakeFiles/mprpc.dir/rpcheader.pb.cc.i: cmake_force
@@ -128,7 +142,7 @@ src/CMakeFiles/mprpc.dir/rpcheader.pb.cc.s: cmake_force
 src/CMakeFiles/mprpc.dir/rpcprovider.cpp.o: src/CMakeFiles/mprpc.dir/flags.make
 src/CMakeFiles/mprpc.dir/rpcprovider.cpp.o: ../../src/rpcprovider.cpp
 src/CMakeFiles/mprpc.dir/rpcprovider.cpp.o: src/CMakeFiles/mprpc.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kirito/projects/mprpc/cmake/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/CMakeFiles/mprpc.dir/rpcprovider.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kirito/projects/mprpc/cmake/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object src/CMakeFiles/mprpc.dir/rpcprovider.cpp.o"
 	cd /home/kirito/projects/mprpc/cmake/build/src && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/mprpc.dir/rpcprovider.cpp.o -MF CMakeFiles/mprpc.dir/rpcprovider.cpp.o.d -o CMakeFiles/mprpc.dir/rpcprovider.cpp.o -c /home/kirito/projects/mprpc/src/rpcprovider.cpp
 
 src/CMakeFiles/mprpc.dir/rpcprovider.cpp.i: cmake_force
@@ -144,6 +158,7 @@ mprpc_OBJECTS = \
 "CMakeFiles/mprpc.dir/mprpcapplication.cpp.o" \
 "CMakeFiles/mprpc.dir/mprpcchannel.cpp.o" \
 "CMakeFiles/mprpc.dir/mprpcconfig.cpp.o" \
+"CMakeFiles/mprpc.dir/mprpccontroller.cpp.o" \
 "CMakeFiles/mprpc.dir/rpcheader.pb.cc.o" \
 "CMakeFiles/mprpc.dir/rpcprovider.cpp.o"
 
@@ -153,11 +168,12 @@ mprpc_EXTERNAL_OBJECTS =
 ../../lib/libmprpc.a: src/CMakeFiles/mprpc.dir/mprpcapplication.cpp.o
 ../../lib/libmprpc.a: src/CMakeFiles/mprpc.dir/mprpcchannel.cpp.o
 ../../lib/libmprpc.a: src/CMakeFiles/mprpc.dir/mprpcconfig.cpp.o
+../../lib/libmprpc.a: src/CMakeFiles/mprpc.dir/mprpccontroller.cpp.o
 ../../lib/libmprpc.a: src/CMakeFiles/mprpc.dir/rpcheader.pb.cc.o
 ../../lib/libmprpc.a: src/CMakeFiles/mprpc.dir/rpcprovider.cpp.o
 ../../lib/libmprpc.a: src/CMakeFiles/mprpc.dir/build.make
 ../../lib/libmprpc.a: src/CMakeFiles/mprpc.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/kirito/projects/mprpc/cmake/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX static library ../../../lib/libmprpc.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/kirito/projects/mprpc/cmake/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX static library ../../../lib/libmprpc.a"
 	cd /home/kirito/projects/mprpc/cmake/build/src && $(CMAKE_COMMAND) -P CMakeFiles/mprpc.dir/cmake_clean_target.cmake
 	cd /home/kirito/projects/mprpc/cmake/build/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/mprpc.dir/link.txt --verbose=$(VERBOSE)
 

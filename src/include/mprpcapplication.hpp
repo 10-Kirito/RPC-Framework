@@ -6,7 +6,7 @@ class MprpcApplication : public SingletonTemplate<MprpcApplication> {
 public:
   friend class SingletonTemplate<MprpcApplication>;
   static void Initialize(int argc, char **argv);
-  static configFile& GetConfig();
+  static configFile &GetConfig();
 
 private:
   static configFile _config;

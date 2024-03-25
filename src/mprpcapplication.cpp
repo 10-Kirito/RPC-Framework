@@ -1,11 +1,11 @@
 #include "mprpcapplication.hpp"
+#include "log.hpp"
+#include "mprpcconfig.hpp"
 #include <cstdlib>
 #include <iostream>
+#include <spdlog/logger.h>
 #include <string>
 #include <unistd.h>
-#include "mprpcconfig.hpp"
-
-
 
 // the static member variable of MprpcConfig
 configFile MprpcApplication::_config;
@@ -19,6 +19,8 @@ void MprpcApplication::Initialize(int argc, char **argv) {
   if (argc < 2) {
     showHelp();
   }
+
+  MprpcApplication &app = MprpcApplication::getInstance();
 
   // get the config file user input in the command line
   int c = 0;
@@ -38,16 +40,8 @@ void MprpcApplication::Initialize(int argc, char **argv) {
   } else {
     showHelp();
   }
-  std::cout << "loading config file <" << configfile << "> ..." << std::endl;
-  // loading the config file using boost.property_tree
+  LOG_INFO("loading config file <{}> ...", configfile);
   _config.load(configfile);
-
-
-  // print the configuration
-  std::cout << _config << std::endl;
-
 }
 
-configFile& MprpcApplication::GetConfig(){
-  return _config;
-}
+configFile &MprpcApplication::GetConfig() { return _config; }

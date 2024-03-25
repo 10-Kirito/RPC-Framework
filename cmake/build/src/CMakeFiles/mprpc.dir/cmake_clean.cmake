@@ -7,6 +7,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/mprpc.dir/mprpcchannel.cpp.o.d"
   "CMakeFiles/mprpc.dir/mprpcconfig.cpp.o"
   "CMakeFiles/mprpc.dir/mprpcconfig.cpp.o.d"
+  "CMakeFiles/mprpc.dir/mprpccontroller.cpp.o"
+  "CMakeFiles/mprpc.dir/mprpccontroller.cpp.o.d"
   "CMakeFiles/mprpc.dir/rpcheader.pb.cc.o"
   "CMakeFiles/mprpc.dir/rpcheader.pb.cc.o.d"
   "CMakeFiles/mprpc.dir/rpcprovider.cpp.o"

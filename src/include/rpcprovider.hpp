@@ -1,4 +1,5 @@
 #pragma once
+#include "log.hpp"
 #include <google/protobuf/descriptor.h>
 #include <google/protobuf/service.h>
 #include <muduo/net/Callbacks.h>
@@ -6,10 +7,11 @@
 #include <muduo/net/InetAddress.h>
 #include <muduo/net/TcpConnection.h>
 #include <muduo/net/TcpServer.h>
+#include <spdlog/logger.h>
 #include <string>
 #include <unordered_map>
 
-class RpcProvider {
+class RpcProvider{
 public:
   // register the rpc service
   void NotifyService(google::protobuf::Service *service);

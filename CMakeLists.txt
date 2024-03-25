@@ -22,6 +22,7 @@ link_directories(${PROJECT_SOURCE_DIR}/lib)
 # find the related packages
 find_package(Protobuf 3.20.3 REQUIRED) # Protobuf
 find_package(Boost REQUIRED) # PropertyTree
+find_package(spdlog REQUIRED) # spdlog
 
 if(Boost_FOUND)
     # ignore BOOST deprecated headers

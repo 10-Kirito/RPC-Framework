@@ -1,0 +1,4 @@
+[2024-03-25 11:12:56.406] [MPRPC] [info] loading config file <config.json> ...
+[2024-03-25 11:12:56.406] [MPRPC] [info] ==>begin test the RPC login()
+[2024-03-25 11:12:56.407] [MPRPC] [info] CONNECT SERVER SUCCESS
+[2024-03-25 11:12:56.407] [MPRPC] [info] CONNECT SERVER SUCCESS

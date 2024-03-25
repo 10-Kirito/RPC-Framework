@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "../../../../bin/provider"
-  "../../../../bin/provider.pdb"
+  "../../../../bin/server/provider"
+  "../../../../bin/server/provider.pdb"
   "CMakeFiles/provider.dir/userservice.cc.o"
   "CMakeFiles/provider.dir/userservice.cc.o.d"
 )

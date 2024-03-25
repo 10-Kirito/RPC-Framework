@@ -1,15 +1,16 @@
 #include "rpcprovider.hpp"
+#include "log.hpp"
 #include "mprpcapplication.hpp"
+#include "rpcheader.pb.h"
 #include <cstdint>
 #include <functional>
 #include <google/protobuf/descriptor.h>
 #include <google/protobuf/stubs/callback.h>
-#include <iomanip>
-#include <iostream>
 #include <muduo/net/InetAddress.h>
 #include <muduo/net/TcpServer.h>
-
-#include "rpcheader.pb.h"
+#include <spdlog/async.h>
+#include <spdlog/sinks/rotating_file_sink.h>
+#include <string>
 
 // register the rpc service
 void RpcProvider::NotifyService(google::protobuf::Service *service) {
@@ -21,18 +22,14 @@ void RpcProvider::NotifyService(google::protobuf::Service *service) {
   // get the name of the service
   std::string serviceName = serviceDes->name();
 
-  std::cout << std::setw(30)
-            << "------begin to register service and functions int it------"
-            << std::endl;
-  std::cout << "service name:" << serviceName << std::endl;
   // get the number of methods in the service
   int methodCount = serviceDes->method_count();
-
+  LOG_INFO("register service name:{}", serviceName);
   for (int i = 0; i < methodCount; ++i) {
     // get the method des of the service
     const google::protobuf::MethodDescriptor *methodDes = serviceDes->method(i);
     serviceInfo.methodMap.insert({methodDes->name(), methodDes});
-    std::cout << "method name:" << methodDes->name() << std::endl;
+    LOG_INFO("register service method:{}", methodDes->name());
   }
 
   // store all details of the service, including the service and all methods
@@ -42,10 +39,7 @@ void RpcProvider::NotifyService(google::protobuf::Service *service) {
   serviceInfo.service = service;
   _serviceMap.insert({serviceName, serviceInfo});
 
-  std::cout << std::setw(30)
-            << "---------------------end register--------------------"
-            << std::endl
-            << std::endl;
+  LOG_INFO("finished the register");
 }
 
 // run the rpc server
@@ -115,7 +109,7 @@ void RpcProvider::onMessage(const muduo::net::TcpConnectionPtr &connection,
     args_size = rpcHeader.args_size();
   } else {
     // parse the RpcHeader failed
-    std::cout << "rpcHeader.ParseFromString failed" << std::endl;
+    LOG_INFO("rpcHeader.ParseFromString failed");
     return;
   }
 
@@ -123,21 +117,21 @@ void RpcProvider::onMessage(const muduo::net::TcpConnectionPtr &connection,
   std::string arguments = recvBuf.substr(4 + header_size, args_size);
 
   // log the info
-  std::cout << "header size:" << header_size << std::endl;
-  std::cout << "service_name:" << service_name << std::endl
-            << "method_name:" << method_name << std::endl
-            << "args_size:" << args_size << std::endl
-            << "arguments:" << arguments << std::endl;
+  LOG_INFO("header size:{}", header_size);
+  LOG_INFO("service_name:{}", service_name);
+  LOG_INFO("method_name:{}", method_name);
+  LOG_INFO("args_size:{}", args_size);
+  LOG_INFO("arguments:{}", arguments);
 
   // check if the service and method exists
   auto it = _serviceMap.find(service_name);
   if (it == _serviceMap.end()) {
-    std::cerr << "Can't find the service:" << service_name << std::endl;
+    LOG_INFO("Can't find the service:{}", service_name);
     return;
   }
   auto methodit = it->second.methodMap.find(method_name);
   if (methodit == it->second.methodMap.end()) {
-    std::cerr << "Can't find the method:" << method_name << std::endl;
+    LOG_INFO("Can't find the method:{}", method_name);
     return;
   }
 
@@ -146,12 +140,13 @@ void RpcProvider::onMessage(const muduo::net::TcpConnectionPtr &connection,
   // get the target method
   const google::protobuf::MethodDescriptor *method = methodit->second;
 
-  // generate the request and response(the request and the response is created by us in the RPC server and client)
+  // generate the request and response(the request and the response is created
+  // by us in the RPC server and client)
   google::protobuf::Message *request =
       service->GetRequestPrototype(method).New();
   // the arguments send from the client
   if (!request->ParseFromString(arguments)) {
-    std::cout << "request parse failed" << std::endl;
+    LOG_INFO("request parse failed");
     return;
   }
   google::protobuf::Message *response =
@@ -173,6 +168,6 @@ void RpcProvider::sendRpcResponse(const muduo::net::TcpConnectionPtr conn,
   if (response->SerializeToString(&response_str)) {
     conn->send(response_str);
   } else {
-    std::cout << "serialize response failed" << std::endl;
+    LOG_INFO("serialize response failed");
   }
 }

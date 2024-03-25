@@ -3,6 +3,7 @@ MprpcController::MprpcController() {
   _failed = false;
   _errorText = "";
 }
+MprpcController::~MprpcController() {}
 
 void MprpcController::Reset() {
   _failed = false;

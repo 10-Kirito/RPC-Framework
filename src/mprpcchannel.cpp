@@ -1,4 +1,5 @@
 #include "mprpcchannel.hpp"
+#include "log.hpp"
 #include "mprpcapplication.hpp"
 #include "mprpcconfig.hpp"
 #include "rpcheader.pb.h"
@@ -9,7 +10,6 @@
 #include <google/protobuf/message.h>
 #include <google/protobuf/service.h>
 #include <google/protobuf/stubs/callback.h>
-#include <iostream>
 #include <memory>
 #include <netinet/in.h>
 #include <string>
@@ -40,6 +40,7 @@ void MprpcChannel::CallMethod(const MethodDescriptor *method,
   if (request->SerializeToString(&arguments_str)) {
     arguments_size = arguments_str.size();
   } else {
+    LOG_ERROR("serialize request failed");
     controller->SetFailed("serialize request failed");
     return;
   }
@@ -55,6 +56,7 @@ void MprpcChannel::CallMethod(const MethodDescriptor *method,
   if (rpcheader.SerializePartialToString(&rpcheaderstr)) {
     header_size = rpcheaderstr.size();
   } else {
+    LOG_ERROR("serialize request failed");
     controller->SetFailed("serialize request failed");
     return;
   }
@@ -65,17 +67,12 @@ void MprpcChannel::CallMethod(const MethodDescriptor *method,
   sendbuffer += rpcheaderstr;
   sendbuffer += arguments_str;
 
-  std::cout << "header size:" << header_size << std::endl;
-  std::cout << "service_name:" << service_name << std::endl
-            << ": method_name:" << method_name << std::endl
-            << " args_size:" << arguments_size << std::endl
-            << "arguments:" << arguments_str << std::endl;
-
   // 3. create a clientfd and connnect the rpc server
   std::shared_ptr<int> clientfdPtr = Connect(controller);
-  std::cout << "connect server success" << std::endl;
+  LOG_INFO("CONNECT SERVER SUCCESS");
   // 4. send the buffer to the RPC server
   if (-1 == SendBuffer(clientfdPtr, sendbuffer)) {
+    LOG_ERROR("send data to server failed");
     controller->SetFailed("send data to server failed");
     exit(EXIT_FAILURE);
   }
@@ -84,6 +81,7 @@ void MprpcChannel::CallMethod(const MethodDescriptor *method,
   std::string receivebuffer = ReceiveBuffer(controller, clientfdPtr);
 
   if (!response->ParseFromString(receivebuffer)) {
+    LOG_ERROR("serialize request failed");
     controller->SetFailed("ParseFromString failed");
     return;
   }
@@ -102,6 +100,7 @@ std::shared_ptr<int> MprpcChannel::Connect(RpcController *controller) {
                                    std::function<void(int *)>(&Closefd));
   // int client = socket(AF_INET, SOCK_STREAM, 0);
   if (-1 == *clientfdPtr) {
+    LOG_ERROR("CREATE SOCKET FAILED");
     controller->SetFailed("create socker failed");
     exit(EXIT_FAILURE);
   }
@@ -116,6 +115,7 @@ std::shared_ptr<int> MprpcChannel::Connect(RpcController *controller) {
   // connect the RPC server
   if (-1 == connect(*clientfdPtr, (struct sockaddr *)&server_addr,
                     sizeof(server_addr))) {
+    LOG_ERROR("CONNECT SERVER FAILED");
     controller->SetFailed("connect server failed");
     exit(EXIT_FAILURE);
   }
@@ -127,13 +127,14 @@ int MprpcChannel::SendBuffer(std::shared_ptr<int> clientPtr,
                              const std::string &buffer) {
   // send the buffer to the RPC server
   if (-1 == send(*clientPtr, buffer.c_str(), buffer.size(), 0)) {
-    std::cout << "send data to server failed" << std::endl;
+    LOG_ERROR("SEND DATA TO SERVER FAILED");
     exit(EXIT_FAILURE);
   }
   return 1;
 }
 
-std::string MprpcChannel::ReceiveBuffer(RpcController* controller,std::shared_ptr<int> clientPtr) {
+std::string MprpcChannel::ReceiveBuffer(RpcController *controller,
+                                        std::shared_ptr<int> clientPtr) {
   // receive the data from the RPC server
   char buffer[1024] = {0};
   std::string receiveData;
@@ -141,9 +142,11 @@ std::string MprpcChannel::ReceiveBuffer(RpcController* controller,std::shared_pt
   while (true) {
     int receiveLen = recv(*clientPtr, buffer, sizeof(buffer), 0);
     if (receiveLen < 0) {
+      LOG_ERROR("RECV() FAILED");
       controller->SetFailed("recv() failed");
       break;
     } else if (receiveLen == 0) {
+      LOG_ERROR("CONNECTION CLOSED BY SERVER");
       controller->SetFailed("Connection closed by server");
       break;
     } else {
