@@ -3,6 +3,7 @@
 #include "mprpcapplication.hpp"
 #include "mprpcconfig.hpp"
 #include "rpcheader.pb.h"
+#include "zookeeper.hpp"
 #include <arpa/inet.h>
 #include <cstdint>
 #include <cstdlib>
@@ -68,7 +69,28 @@ void MprpcChannel::CallMethod(const MethodDescriptor *method,
   sendbuffer += arguments_str;
 
   // 3. create a clientfd and connnect the rpc server
-  std::shared_ptr<int> clientfdPtr = Connect(controller);
+  ZooKeeper zookeeper;
+  zookeeper.Start();
+  std::string method_path = "/" + service_name + "/" + method_name;
+  std::string hostdata = zookeeper.GetData(method_path.c_str());
+
+  if (hostdata == "") {
+    LOG_ERROR("method_pth is not exist on zookeeper");
+    controller->SetFailed("method_pth is not exist on zookeeper");
+    return;
+  }
+
+  // we find the ip:port on zookeeper
+  int idx = hostdata.find(":");
+  if (idx == -1) {
+    LOG_ERROR("address found on zookeeper is invalid");
+    controller->SetFailed("address found on zookeeper is invalid");
+    return;
+  }
+  std::string ip = hostdata.substr(0, idx);
+  uint16_t port = atoi(hostdata.substr(idx + 1).c_str());
+
+  std::shared_ptr<int> clientfdPtr = Connect(controller, ip, port);
   LOG_INFO("CONNECT SERVER SUCCESS");
   // 4. send the buffer to the RPC server
   if (-1 == SendBuffer(clientfdPtr, sendbuffer)) {
@@ -94,7 +116,8 @@ void Closefd(int *fd) {
   }
 }
 
-std::shared_ptr<int> MprpcChannel::Connect(RpcController *controller) {
+std::shared_ptr<int> MprpcChannel::Connect(RpcController *controller,
+                                           std::string ip, uint16_t port) {
   // create a clientfd
   std::shared_ptr<int> clientfdPtr(new int(socket(AF_INET, SOCK_STREAM, 0)),
                                    std::function<void(int *)>(&Closefd));
@@ -104,9 +127,10 @@ std::shared_ptr<int> MprpcChannel::Connect(RpcController *controller) {
     controller->SetFailed("create socker failed");
     exit(EXIT_FAILURE);
   }
+
   // create the addr
-  std::string ip = MprpcApplication::getInstance().GetConfig().serverIP;
-  uint16_t port = MprpcApplication::getInstance().GetConfig().serverPort;
+  /* std::string ip = MprpcApplication::getInstance().GetConfig().serverIP;
+  uint16_t port = MprpcApplication::getInstance().GetConfig().serverPort; */
   struct sockaddr_in server_addr;
   server_addr.sin_family = AF_INET;
   server_addr.sin_port = htons(port);

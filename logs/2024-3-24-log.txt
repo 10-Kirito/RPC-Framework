@@ -1,4 +1,0 @@
-[2024-03-24 20:03:47.542] [RpcProvider] [info] register service method:Login
-[2024-03-24 20:03:47.542] [RpcProvider] [info] register service method:GetUserInfo
-[2024-03-24 20:03:47.542] [RpcProvider] [info] finished the register
-[2024-03-24 20:03:47.542] [RpcProvider] [info] register service name:UserServiceRPC

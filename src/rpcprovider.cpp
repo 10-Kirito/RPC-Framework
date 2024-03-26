@@ -2,7 +2,9 @@
 #include "log.hpp"
 #include "mprpcapplication.hpp"
 #include "rpcheader.pb.h"
+#include "zookeeper.hpp"
 #include <cstdint>
+#include <cstdio>
 #include <functional>
 #include <google/protobuf/descriptor.h>
 #include <google/protobuf/stubs/callback.h>
@@ -11,6 +13,7 @@
 #include <spdlog/async.h>
 #include <spdlog/sinks/rotating_file_sink.h>
 #include <string>
+#include <zookeeper/zookeeper.h>
 
 // register the rpc service
 void RpcProvider::NotifyService(google::protobuf::Service *service) {
@@ -60,6 +63,24 @@ void RpcProvider::Start() {
 
   // set the number of threads in muduo
   server.setThreadNum(8);
+
+  // zookeeper init
+  ZooKeeper zookeeper;
+  zookeeper.Start();
+  for (auto &service : _serviceMap) {
+    // service name
+    std::string service_path = "/" + service.first;
+    zookeeper.Create(service_path.c_str(), nullptr, 0);
+
+    for (auto method : service.second.methodMap) {
+      std::string method_path = service_path + "/" + method.first;
+      char method_path_data[300] = {0};
+      sprintf(method_path_data, "%s:%d", ip.c_str(), port);
+      // ZOO_EPHEMERAL: the node will be deleted when the client disconnects
+      zookeeper.Create(method_path.c_str(), method_path_data,
+                       sizeof(method_path_data), ZOO_EPHEMERAL);
+    }
+  }
 
   // start the server
   server.start();

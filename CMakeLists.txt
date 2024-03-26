@@ -7,6 +7,8 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 # set the compile mode
 set(CMAKE_BUILD_TYPE "Debug")
 
+add_compile_definitions(THREADED)
+
 # set the path of the executable and library
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)

@@ -5,3 +5,6 @@ cmake/*
 .vscode/*
 
 .cache/*
+
+bin/client/logs/*
+bin/server/logs/*
