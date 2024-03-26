@@ -8,3 +8,5 @@ cmake/*
 
 bin/client/logs/*
 bin/server/logs/*
+
+cmake/*
